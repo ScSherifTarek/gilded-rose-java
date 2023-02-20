@@ -11,9 +11,6 @@ import java.util.stream.Stream;
 
 class GildedRoseTest {
     private static final String ITEM_NAME_NORMAL = "Normal";
-    private static final String ITEM_NAME_AGED_BRIE = "Aged Brie";
-    private static final String ITEM_NAME_SULFURAS = "Sulfuras, Hand of Ragnaros";
-    private static final String ITEM_NAME_BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
 
     @ParameterizedTest(name = "{0}")
     @MethodSource("provideScenariosForUpdateQuality")
@@ -41,43 +38,43 @@ class GildedRoseTest {
             ),
             Arguments.of(
                 "Aged Brie quality increases the older it gets", 
-                new Item(ITEM_NAME_AGED_BRIE, 0, 5), 7
+                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 5), 7
             ),
             Arguments.of(
                 "Item quality can't be more than 50", 
-                new Item(ITEM_NAME_AGED_BRIE, 0, 50), 50
+                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 50), 50
             ),
             Arguments.of(
                 "Sulfuras quality never changes", 
-                new Item(ITEM_NAME_SULFURAS, 0, 50), 50
+                new Item(GildedRose.ITEM_NAME_SULFURAS, 0, 50), 50
             ),
             Arguments.of(
                 "Backstage passes don't change if sellIn > 10 days", 
-                new Item(ITEM_NAME_BACKSTAGE_PASSES, 11, 50), 50
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 11, 50), 50
             ),
             Arguments.of(
                 "Backstage passes increases by 2 if 5 < sellIn <= 10 days: test 10", 
-                new Item(ITEM_NAME_BACKSTAGE_PASSES, 10, 30), 32
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 10, 30), 32
             ),
             Arguments.of(
                 "Backstage passes increases by 2 if 5 < sellIn <= 10 days: test 6", 
-                new Item(ITEM_NAME_BACKSTAGE_PASSES, 6, 30), 32
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 6, 30), 32
             ),
             Arguments.of(
                 "Backstage passes increases by 3 if 0 < sellIn <= 5 days: test 5", 
-                new Item(ITEM_NAME_BACKSTAGE_PASSES, 5, 30), 33
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 5, 30), 33
             ),
             Arguments.of(
                 "Backstage passes increases by 3 if 0 < sellIn <= 5 days: test 1", 
-                new Item(ITEM_NAME_BACKSTAGE_PASSES, 1, 30), 33
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 1, 30), 33
             ),
             Arguments.of(
                 "Backstage passes quality can't be more than 50", 
-                new Item(ITEM_NAME_BACKSTAGE_PASSES, 1, 50), 50
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 1, 50), 50
             ),
             Arguments.of(
                 "Backstage passes drops tp 0 if sellIn <= 0", 
-                new Item(ITEM_NAME_BACKSTAGE_PASSES, 0, 30), 0
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 0, 30), 0
             )
         );
     }
@@ -93,7 +90,7 @@ class GildedRoseTest {
 
     @Test
     void sulfuras_sell_in_never_changes() {
-        Item item = new Item(ITEM_NAME_SULFURAS, 5, 10);
+        Item item = new Item(GildedRose.ITEM_NAME_SULFURAS, 5, 10);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
