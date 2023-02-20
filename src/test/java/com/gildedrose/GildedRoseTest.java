@@ -37,7 +37,11 @@ class GildedRoseTest {
                 new Item(ITEM_NAME_NORMAL, 0, 0), 0
             ),
             Arguments.of(
-                "Aged Brie quality increases the older it gets", 
+                "Aged Brie quality increases by 1 when the sellIn > 0", 
+                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 1, 5), 6
+            ),
+            Arguments.of(
+                "Aged Brie quality increases by 2 when the sellIn <= 0", 
                 new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 5), 7
             ),
             Arguments.of(
