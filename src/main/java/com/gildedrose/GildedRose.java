@@ -19,24 +19,10 @@ class GildedRose {
             } else if (item.name.equals(ITEM_NAME_BACKSTAGE_PASSES)) {
                 this.handleBackstagePasses(item);
                 continue;
-            }
-
-            if (item.quality > 0) {
-                if (!item.name.equals(ITEM_NAME_SULFURAS)) {
-                    item.quality = item.quality - 1;
-                }
-            }
-
-            if (!item.name.equals(ITEM_NAME_SULFURAS)) {
-                item.sellIn = item.sellIn - 1;
-            }
-
-            if (item.sellIn < 0) {
-                if (item.quality > 0) {
-                    if (!item.name.equals(ITEM_NAME_SULFURAS)) {
-                        item.quality = item.quality - 1;
-                    }
-                }
+            } else if (item.name.equals(ITEM_NAME_SULFURAS)) {
+                continue;
+            } else {
+                this.handleNormalItem(item);
             }
         }
     }
@@ -54,17 +40,26 @@ class GildedRose {
     }
 
     private void handleBackstagePasses(Item item) {
-        item.sellIn -= 1;
-        if (item.sellIn < 0) {
+        if (item.sellIn <= 0) {
             item.quality = 0;
-        } else if (item.sellIn < 5) {
+        } else if (item.sellIn <= 5) {
             item.quality = item.quality + 3;
-        } else if (item.sellIn < 10) {
+        } else if (item.sellIn <= 10) {
             item.quality = item.quality + 2;
         }
 
-        if (item.quality > 50) {
-            item.quality = 50;
+        item.sellIn -= 1;
+        item.quality = Math.min(item.quality, 50);
+    }
+
+    private void handleNormalItem(Item item) {
+        if(item.sellIn > 0) {
+            item.quality -= 1;
+        } else {
+            item.quality -= 2;
         }
+
+        item.sellIn -= 1;
+        item.quality = Math.max(item.quality, 0);
     }
 }
