@@ -81,8 +81,12 @@ class GildedRoseTest {
                 new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 0, 30), 0
             ),
             Arguments.of(
-                "If item quality started with more than 50 it should never increases more than", 
+                "If Aged Brie quality started with more than 50 it should never increases more than", 
                 new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 54), 54
+            ),
+            Arguments.of(
+                "If Backstage passes quality started with more than 50 it should never increases more than", 
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 2, 54), 54
             ),
             Arguments.of(
                 "If item quality started with more than 50 it should decrease normally", 
@@ -93,8 +97,13 @@ class GildedRoseTest {
                 new Item(ITEM_NAME_NORMAL, 5, -1), -1
             ),
             Arguments.of(
-                "If item quality started with less than 0 it should increase normally", 
+                "If Aged Brie quality started with less than 0 it should increase normally", 
                 new Item(GildedRose.ITEM_NAME_AGED_BRIE, 5, -1), 0
+            )
+            ,
+            Arguments.of(
+                "If Backstage passes quality started with less than 0 it should increase normally", 
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES,2, -5), -2
             )
         );
     }
