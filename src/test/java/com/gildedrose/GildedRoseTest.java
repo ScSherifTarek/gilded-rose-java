@@ -45,7 +45,7 @@ class GildedRoseTest {
                 new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 5), 7
             ),
             Arguments.of(
-                "Item quality can't be more than 50", 
+                "Item quality can't increase to more than 50", 
                 new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 50), 50
             ),
             Arguments.of(
@@ -79,6 +79,22 @@ class GildedRoseTest {
             Arguments.of(
                 "Backstage passes drops tp 0 if sellIn <= 0", 
                 new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 0, 30), 0
+            ),
+            Arguments.of(
+                "If item quality started with more than 50 it should never increases more than", 
+                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 54), 54
+            ),
+            Arguments.of(
+                "If item quality started with more than 50 it should decrease normally", 
+                new Item(ITEM_NAME_NORMAL, 5, 54), 53
+            ),
+            Arguments.of(
+                "If item quality started with less than 0 it shouldn't decrease more than that", 
+                new Item(ITEM_NAME_NORMAL, 5, -1), -1
+            ),
+            Arguments.of(
+                "If item quality started with less than 0 it should increase normally", 
+                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 5, -1), 0
             )
         );
     }
