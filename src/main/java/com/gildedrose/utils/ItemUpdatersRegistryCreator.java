@@ -4,6 +4,7 @@ import com.gildedrose.ItemNames;
 import com.gildedrose.ItemUpdatersRegistry;
 import com.gildedrose.dailyItemUpdaters.AgedBrieUpdater;
 import com.gildedrose.dailyItemUpdaters.BackstagePassUpdater;
+import com.gildedrose.dailyItemUpdaters.ConjuredUpdater;
 import com.gildedrose.dailyItemUpdaters.NormalUpdater;
 import com.gildedrose.dailyItemUpdaters.SulfurasUpdater;
 
@@ -14,6 +15,7 @@ public class ItemUpdatersRegistryCreator {
         registry.put(ItemNames.AGED_BRIE.toString(), new AgedBrieUpdater());
         registry.put(ItemNames.SULFURAS.toString(), new SulfurasUpdater());
         registry.put(ItemNames.BACKSTAGE_PASSES.toString(), new BackstagePassUpdater());
+        registry.put(ItemNames.CONJURED.toString(), new ConjuredUpdater());
         return registry;
     }
 }
