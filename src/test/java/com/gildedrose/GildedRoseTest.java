@@ -38,63 +38,63 @@ class GildedRoseTest {
             ),
             Arguments.of(
                 "Aged Brie quality increases by 1 when the sellIn > 0", 
-                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 1, 5), 6
+                new Item(ItemNames.AGED_BRIE.toString(), 1, 5), 6
             ),
             Arguments.of(
                 "Aged Brie quality increases by 2 when the sellIn <= 0", 
-                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 5), 7
+                new Item(ItemNames.AGED_BRIE.toString(), 0, 5), 7
             ),
             Arguments.of(
                 "Aged Brie quality can't increase to more than 50 if started with 50", 
-                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 50), 50
+                new Item(ItemNames.AGED_BRIE.toString(), 0, 50), 50
             ),
             Arguments.of(
                 "Aged Brie quality can't increase to more than 50 if started with 50 and sellIn > 0", 
-                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 1, 50), 50
+                new Item(ItemNames.AGED_BRIE.toString(), 1, 50), 50
             ),
             Arguments.of(
                 "Aged Brie quality can't increase to more than 50 if started < 50", 
-                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 49), 50
+                new Item(ItemNames.AGED_BRIE.toString(), 0, 49), 50
             ),
             Arguments.of(
                 "Sulfuras quality never changes", 
-                new Item(GildedRose.ITEM_NAME_SULFURAS, 0, 80), 80
+                new Item(ItemNames.SULFURAS.toString(), 0, 80), 80
             ),
             Arguments.of(
                 "Backstage passes quality don't change if sellIn > 10 days", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 11, 50), 50
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(), 11, 50), 50
             ),
             Arguments.of(
                 "Backstage passes quality increases by 2 if 5 < sellIn <= 10 days: test sellIn = 10", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 10, 30), 32
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(), 10, 30), 32
             ),
             Arguments.of(
                 "Backstage passes quality increases by 2 if 5 < sellIn <= 10 days: test sellIn = 6", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 6, 30), 32
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(), 6, 30), 32
             ),
             Arguments.of(
                 "Backstage passes quality increases by 3 if 0 < sellIn <= 5 days: test sellIn = 5", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 5, 30), 33
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(), 5, 30), 33
             ),
             Arguments.of(
                 "Backstage passes quality increases by 3 if 0 < sellIn <= 5 days: test sellIn = 1", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 1, 30), 33
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(), 1, 30), 33
             ),
             Arguments.of(
                 "Backstage passes quality can't be more than 50", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 1, 49), 50
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(), 1, 49), 50
             ),
             Arguments.of(
                 "Backstage passes drops tp 0 if sellIn <= 0", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 0, 30), 0
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(), 0, 30), 0
             ),
             Arguments.of(
                 "If Aged Brie quality started with more than 50 it should never increases more than", 
-                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 54), 54
+                new Item(ItemNames.AGED_BRIE.toString(), 0, 54), 54
             ),
             Arguments.of(
                 "If Backstage passes quality started with more than 50 it should never increases more than", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 2, 54), 54
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(), 2, 54), 54
             ),
             Arguments.of(
                 "If item quality started with more than 50 it should decrease normally", 
@@ -106,12 +106,12 @@ class GildedRoseTest {
             ),
             Arguments.of(
                 "If Aged Brie quality started with less than 0 it should increase normally", 
-                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 5, -1), 0
+                new Item(ItemNames.AGED_BRIE.toString(), 5, -1), 0
             )
             ,
             Arguments.of(
                 "If Backstage passes quality started with less than 0 it should increase normally", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES,2, -5), -2
+                new Item(ItemNames.BACKSTAGE_PASSES.toString(),2, -5), -2
             )
         );
     }
@@ -127,7 +127,7 @@ class GildedRoseTest {
 
     @Test
     void sulfuras_sell_in_never_changes() {
-        Item item = new Item(GildedRose.ITEM_NAME_SULFURAS, 5, 10);
+        Item item = new Item(ItemNames.SULFURAS.toString(), 5, 10);
         Item[] items = new Item[] { item };
         GildedRose app = new GildedRose(items);
         app.updateQuality();

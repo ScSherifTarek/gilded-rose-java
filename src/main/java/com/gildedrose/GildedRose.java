@@ -1,10 +1,6 @@
 package com.gildedrose;
 
 class GildedRose {
-    public static final String ITEM_NAME_AGED_BRIE = "Aged Brie";
-    public static final String ITEM_NAME_SULFURAS = "Sulfuras, Hand of Ragnaros";
-    public static final String ITEM_NAME_BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -13,13 +9,13 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if(item.name.equals(ITEM_NAME_AGED_BRIE)) {
+            if(item.name.equals(ItemNames.AGED_BRIE.toString())) {
                 this.handleAgedBrie(item);
                 continue;
-            } else if (item.name.equals(ITEM_NAME_BACKSTAGE_PASSES)) {
+            } else if (item.name.equals(ItemNames.BACKSTAGE_PASSES.toString())) {
                 this.handleBackstagePasses(item);
                 continue;
-            } else if (item.name.equals(ITEM_NAME_SULFURAS)) {
+            } else if (item.name.equals(ItemNames.SULFURAS.toString())) {
                 continue;
             } else {
                 this.handleNormalItem(item);
