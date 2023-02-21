@@ -1,9 +1,10 @@
 package com.gildedrose;
 
+import com.gildedrose.utils.ItemUpdatersRegistryCreator;
+
 public class TexttestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
-
         Item[] items = new Item[] {
                 new Item("+5 Dexterity Vest", 10, 20), //
                 new Item("Aged Brie", 2, 0), //
@@ -16,7 +17,7 @@ public class TexttestFixture {
                 // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(items, ItemUpdatersRegistryCreator.makeDefaultInstance());
 
         int days = 2;
         if (args.length > 0) {

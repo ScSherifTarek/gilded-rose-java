@@ -5,6 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import com.gildedrose.utils.ItemUpdatersRegistryCreator;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.stream.Stream;
@@ -17,7 +19,7 @@ class GildedRoseTest {
     void test_item_quality_changes(String scenario, Item item, int expectedQuality)
     {
         Item[] items = new Item[] { item };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(items, ItemUpdatersRegistryCreator.makeDefaultInstance());
         app.updateQuality();
         assertEquals(expectedQuality, item.quality);
     }
@@ -120,7 +122,7 @@ class GildedRoseTest {
     void normal_item_sell_in_decreases_by_one() {
         Item item = new Item(ITEM_NAME_NORMAL, 5, 10);
         Item[] items = new Item[] { item };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(items, ItemUpdatersRegistryCreator.makeDefaultInstance());
         app.updateQuality();
         assertEquals(4, item.sellIn);
     }
@@ -129,7 +131,7 @@ class GildedRoseTest {
     void sulfuras_sell_in_never_changes() {
         Item item = new Item(ItemNames.SULFURAS.toString(), 5, 10);
         Item[] items = new Item[] { item };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(items, ItemUpdatersRegistryCreator.makeDefaultInstance());
         app.updateQuality();
         assertEquals(5, item.sellIn);
     }
