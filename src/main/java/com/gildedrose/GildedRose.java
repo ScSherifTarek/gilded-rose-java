@@ -34,6 +34,7 @@ class GildedRose {
             } else {
                 item.quality += 1;
             }
+            item.quality = Math.min(item.quality, 50);
         }
 
         item.sellIn -= 1;
