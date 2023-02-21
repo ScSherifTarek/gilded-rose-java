@@ -109,11 +109,30 @@ class GildedRoseTest {
             Arguments.of(
                 "If Aged Brie quality started with less than 0 it should increase normally", 
                 new Item(ItemNames.AGED_BRIE.toString(), 5, -1), 0
-            )
-            ,
+            ),
             Arguments.of(
                 "If Backstage passes quality started with less than 0 it should increase normally", 
                 new Item(ItemNames.BACKSTAGE_PASSES.toString(),2, -5), -2
+            ),
+            Arguments.of(
+                "Conjured item quality degrades by two when sellIn > 1", 
+                new Item(ItemNames.CONJURED.toString(), 5, 10), 8
+            ),
+            Arguments.of(
+                "Conjured item quality degrades by four when sellIn <= 0", 
+                new Item(ItemNames.CONJURED.toString(), 0, 10), 6
+            ),
+            Arguments.of(
+                "Conjured item quality never goes to negative", 
+                new Item(ItemNames.CONJURED.toString(), 0, 0), 0
+            ),
+            Arguments.of(
+                "If conjured item quality started with more than 50 it should decrease normally", 
+                new Item(ItemNames.CONJURED.toString(), 5, 54), 52
+            ),
+            Arguments.of(
+                "If conjured item quality started with less than 0 it shouldn't decrease more than that", 
+                new Item(ItemNames.CONJURED.toString(), 5, -1), -1
             )
         );
     }
