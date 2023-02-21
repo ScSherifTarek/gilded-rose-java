@@ -45,36 +45,44 @@ class GildedRoseTest {
                 new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 5), 7
             ),
             Arguments.of(
-                "Item quality can't increase to more than 50", 
+                "Aged Brie quality can't increase to more than 50 if started with 50", 
                 new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 50), 50
+            ),
+            Arguments.of(
+                "Aged Brie quality can't increase to more than 50 if started with 50 and sellIn > 0", 
+                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 1, 50), 50
+            ),
+            Arguments.of(
+                "Aged Brie quality can't increase to more than 50 if started < 50", 
+                new Item(GildedRose.ITEM_NAME_AGED_BRIE, 0, 49), 50
             ),
             Arguments.of(
                 "Sulfuras quality never changes", 
                 new Item(GildedRose.ITEM_NAME_SULFURAS, 0, 80), 80
             ),
             Arguments.of(
-                "Backstage passes don't change if sellIn > 10 days", 
+                "Backstage passes quality don't change if sellIn > 10 days", 
                 new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 11, 50), 50
             ),
             Arguments.of(
-                "Backstage passes increases by 2 if 5 < sellIn <= 10 days: test 10", 
+                "Backstage passes quality increases by 2 if 5 < sellIn <= 10 days: test sellIn = 10", 
                 new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 10, 30), 32
             ),
             Arguments.of(
-                "Backstage passes increases by 2 if 5 < sellIn <= 10 days: test 6", 
+                "Backstage passes quality increases by 2 if 5 < sellIn <= 10 days: test sellIn = 6", 
                 new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 6, 30), 32
             ),
             Arguments.of(
-                "Backstage passes increases by 3 if 0 < sellIn <= 5 days: test 5", 
+                "Backstage passes quality increases by 3 if 0 < sellIn <= 5 days: test sellIn = 5", 
                 new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 5, 30), 33
             ),
             Arguments.of(
-                "Backstage passes increases by 3 if 0 < sellIn <= 5 days: test 1", 
+                "Backstage passes quality increases by 3 if 0 < sellIn <= 5 days: test sellIn = 1", 
                 new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 1, 30), 33
             ),
             Arguments.of(
                 "Backstage passes quality can't be more than 50", 
-                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 1, 50), 50
+                new Item(GildedRose.ITEM_NAME_BACKSTAGE_PASSES, 1, 49), 50
             ),
             Arguments.of(
                 "Backstage passes drops tp 0 if sellIn <= 0", 
