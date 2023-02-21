@@ -28,37 +28,44 @@ class GildedRose {
     }
 
     private void handleAgedBrie(Item item) {
-        if (item.sellIn <= 0) {
-            item.quality += 2;
-        } else {
-            item.quality += 1;
+        if(item.quality < 50) {
+            if (item.sellIn <= 0) {
+                item.quality += 2;
+            } else {
+                item.quality += 1;
+            }
         }
 
         item.sellIn -= 1;
-        item.quality = Math.min(item.quality, 50);
     }
 
     private void handleBackstagePasses(Item item) {
-        if (item.sellIn <= 0) {
-            item.quality = 0;
-        } else if (item.sellIn <= 5) {
-            item.quality += 3;
-        } else if (item.sellIn <= 10) {
-            item.quality += 2;
+        if(item.quality < 50) {
+            if (item.sellIn <= 0) {
+                item.quality = 0;
+            } else if (item.sellIn <= 5) {
+                item.quality += 3;
+            } else if (item.sellIn <= 10) {
+                item.quality += 2;
+            }
+
+            item.quality = Math.min(item.quality, 50);
         }
 
         item.sellIn -= 1;
-        item.quality = Math.min(item.quality, 50);
     }
 
     private void handleNormalItem(Item item) {
-        if(item.sellIn > 0) {
-            item.quality -= 1;
-        } else {
-            item.quality -= 2;
+        if(item.quality > 0) {
+            if(item.sellIn > 0) {
+                item.quality -= 1;
+            } else {
+                item.quality -= 2;
+            }
+            
+            item.quality = Math.max(item.quality, 0);
         }
 
         item.sellIn -= 1;
-        item.quality = Math.max(item.quality, 0);
     }
 }
