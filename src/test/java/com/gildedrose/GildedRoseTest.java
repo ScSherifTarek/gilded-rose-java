@@ -50,7 +50,7 @@ class GildedRoseTest {
             ),
             Arguments.of(
                 "Sulfuras quality never changes", 
-                new Item(GildedRose.ITEM_NAME_SULFURAS, 0, 50), 50
+                new Item(GildedRose.ITEM_NAME_SULFURAS, 0, 80), 80
             ),
             Arguments.of(
                 "Backstage passes don't change if sellIn > 10 days", 
